@@ -1,0 +1,37 @@
+In order to track down our potential witness, we need to figure out where she lives.
+
+Try using 'head' on some of the files like 'people' and 'vehicles' and see where we might find that.
+To go to the street someone lives on, use the file
+for that street name in the 'streets' subdirectory.
+To knock on their door and investigate, read the line number
+they live on from the file.  If a line looks like gibberish, you're at the wrong house.
+***************
+
+NAME    GENDER  AGE     ADDRESS
+Alicia Fuentes  F       48      Walton Street, line 433
+Jo-Ting Losev   F       46      Hemenway Street, line 390
+
+License Plate T3YUHF6
+Make: Toyota
+Color: Yellow
+Owner: Jianbo Megannem
+Height: 5'6"
+Weight: 246 lbs
+To find all the Annabels' addresses, use the 'people' file:
+
+        grep "Annabel" people
+
+Notice that not all of the results are worth investigating.  Remember what we know about Annabel.
+$ grep "Annabel" people
+Annabel Sun     F       26      Hart Place, line 40
+Oluwasegun Annabel      M       37      Mattapan Street, line 173
+Annabel Church  F       38      Buckingham Place, line 179
+Annabel Fuglsang        M       40      Haley Street, line 176
+"Interview" the two possible witnesses by reading the correct line from the streets they live on:
+
+        head -n 173 streets/Mattapan_Street | tail -n 1
+
+This will give you just line 173 of Mattapan street, because it will take first 173 lines, and then take
+the last line from those.
+Name of killer:
+Annabel
